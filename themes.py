@@ -172,7 +172,7 @@ if __name__ == "__main__":
         DOMAIN = env.get('TP_DOMAIN')
     else:
         with open("CNAME", "rt", closefd=True) as cname:
-            CNAME = cname.readline()
+            CNAME = cname.readline(5_000_000)
 
         DOMAIN = f"{branch}.{CNAME}" if branch not in ["master","main"] else CNAME
     apps = loads(create_json(app_folders=app_folders, themes=themes, community_themes=community_themes, docker_mods=docker_mods))
